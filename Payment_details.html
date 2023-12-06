@@ -70,7 +70,7 @@
     <label> Swipe: </label>         
     <input type="text" name="swipe" id="swipe" value="0" size="10"/> <br> <br>  
     <br> <br>
-    <input type="button" value ="Amount Collected" onclick="calcSum2()"> <input type="text" id="totalcollected" name="totalcollected" required/>
+    <input type="button" value ="Amount Collected" onclick="both()"> <input type="text" id="totalcollected" name="totalcollected" required/>
     <br/><br/>
     <input type="submit" value="Submit" name="submit" id="submit"/>  
     </form>
@@ -92,7 +92,8 @@
             let box10 = document.getElementById("swipe").value;
             let sum2 = Number(box8) + Number(box9) + Number(box10);
              document.getElementById("totalcollected").value = sum2;
-        
+        }
+        function comp(){
             var text1 = document.getElementById("totalcollected").value;
             var text2 = document.getElementById("total2collect").value;
 
@@ -102,8 +103,10 @@
                 alert("Different Amounts!!! Please Check again....");
                 }
         }
-
-           
+        function both(){
+        calcSum2();
+        comp();
+        }
     </script>       
     </body>  
 </html>  
