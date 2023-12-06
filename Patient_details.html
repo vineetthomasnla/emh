@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .container {
+          height: 180px;
+          position: relative;
+          border: 3px solid blue;
+        }
+        
+        .vertical-center {
+          margin: 0;
+          position: right=200px;
+          top: 20%;
+          -ms-transform: translateY(-30%);
+          transform: translateY(-30%);
+        }
+        input {
+        padding: 5px 10px;
+      }
+    </style>
+    <head> 
+        <div class="container">
+           <center> <img src="Emory_logo.jpeg" alt="EmoryLogo" width="100" height="100" /> </center>
+            <div class="vertical-center">
+                <h1 align="center">
+                     EMORY HOSPITAL - OP Patient Registration 
+                </h1>
+            </div>
+        
+        </div> 
+    </head>
+    <body bgcolor="LavenderBlush">  
+    <br>  
+    <br>  
+    
+    <form
+      method="POST"
+      action="https://script.google.com/macros/s/AKfycbx-KXWZBA7XyYIpHWrEVxR-tjjtSKZ_wMXLUitvV9pdlQRvud4nXdNQ1Sh66qstEirMBg/exec">  
+    <label> Patient ID: </label>         
+    <input type="text" name="pid" size="10" required/> <br> <br> 
+    <label> Date: </label> 
+    <input type="date" id="Date" name="date">   <br> <br>    
+    <label> Patient Name: </label>         
+    <input type="text" name="pname" size="20" required/> <br> <br>   
+    <label> Father/Husband's Name: </label>         
+    <input type="text" name="fhname" size="20" required/> <br> <br>  
+    <label> Age: </label>         
+    <input type="text" name="age" size="5" required/> <br> <br>  
+      
+    <label>   
+    Consulting Doctor :  
+    </label>   
+    <select name="con_doc">  
+    <option value="Mani">Dr. Mani Madhuri</option>  
+    <option value="Suhas">Dr. Suhas Masilamani</option>  
+    <option value="Others">Others</option>  
+    </select>  
+      
+    <br>  
+    <br>  
+    <label>   
+    Gender :  
+    <select name="gender">  
+      <option value="female">Female</option>  
+      <option value="male">Male</option> 
+      <option value="Others">Others</option>  
+    </select>  
+    <br>  
+    <br>  
+    <label>   
+    Phone :  
+    </label>    
+    <input type="text" name="phone" size="10"/> <br> <br>  
+    Address  
+    <br>  
+    <textarea cols="80" rows="5" name="address" value="address">  
+    </textarea>  
+    <br> <br>  
+    Email:  
+    <input type="email" id="email" name="email"/> <br>    
+    <br> <br>  
+    <hr style="width:50%;text-align:left;margin-left:0">
+    <br>
+   
+    <input type="submit" value="Submit" name="submit" id="submit"/>  
+    </form>    
+    </body>  
+</html>  

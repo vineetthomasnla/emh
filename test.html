@@ -1,0 +1,116 @@
+HTML and Javascript Code in Video:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+<script>
+function loadRecords(record) {
+
+    google.script.run.withSuccessHandler(function(ar) 
+    {
+      var record = document.getElementById("record").value;
+ 
+      console.log(ar);
+      console.log(record);
+
+      var recordCount = 0;
+
+      ar.forEach(function(item, index) 
+      {   
+        if(index == record - 1)
+        {
+          document.getElementById("firstname").value = item[0];
+          document.getElementById("lastname").value = item[1];
+          document.getElementById("street").value = item[2];
+          document.getElementById("city").value = item[3];
+          document.getElementById("state").value = item[4];
+          document.getElementById("zip").value = item[5];
+        }       
+        recordCount++;
+      });
+      
+      console.log(recordCount);
+      document.getElementById("maxRecord").value = recordCount;
+
+    }).getList();
+    
+    
+  }
+  
+  function NextRecord()
+  {
+    var record = document.getElementById("record").value;
+    var maxRecord = document.getElementById("maxRecord").value;
+    var nextRecord = Number(record) + 1;
+    if(nextRecord <= maxRecord)
+    {
+      document.getElementById("record").value = nextRecord;
+      loadRecords();
+    }
+  }
+  
+  function PreviousRecord()
+  {
+    var record = document.getElementById("record").value;
+    var previousRecord = Number(record) - 1;
+    if(previousRecord >= 1)
+    {
+      document.getElementById("record").value = previousRecord;
+      loadRecords();
+    }
+  }
+ 
+  function UpdateRecord()
+  {
+    var record = document.getElementById("record").value;
+    var firstname = document.getElementById("firstname").value;
+    var lastname = document.getElementById("lastname").value;
+    var street = document.getElementById("street").value;
+    var city = document.getElementById("city").value;
+    var state = document.getElementById("state").value;
+    var zip = document.getElementById("zip").value;
+    google.script.run.withSuccessHandler(loadRecords).UpdateRecord(record, firstname, lastname, street, city, state, zip);
+    document.getElementById("record").value = record;
+  }
+  
+  function DeleteRecord()
+  {
+    var record = document.getElementById("record").value;
+    google.script.run.withSuccessHandler(loadRecords).DeleteRecord(record);
+    document.getElementById("record").value = 1;
+  }
+  
+  function AddRecord()
+  {
+    var maxRecord = document.getElementById("maxRecord").value;
+    document.getElementById("record").value = Number(maxRecord) + 1;    
+    document.getElementById("firstname").value = '';
+    document.getElementById("lastname").value = '';
+    document.getElementById("street").value = '';
+    document.getElementById("city").value = '';
+    document.getElementById("state").value = '';
+    document.getElementById("zip").value = '';
+  } 
+  
+  
+  
+</script>
+  </head>
+  <body>
+  First Name: <input type="text" id="firstname" /><br>
+  Last Name:<input type="text" id="lastname" /><br>
+  Street:<input type="text" id="street" /><br>
+  City:<input type="text" id="city" /><br>
+  State:<input type="text" id="state" /><br>
+  Zip:<input type="text" id="zip" /><br>
+  <input type="button" value="<" onclick="PreviousRecord()" />
+  <input type="text" value="1" id="record" size="2px" />
+  <input type="hidden" id="maxRecord" />
+  <input type="button" value=">" onclick="NextRecord()" /><br><br>
+  <input type="button" value="Update" onclick="UpdateRecord()" />&nbsp;&nbsp;
+  <input type="button" value="Add" onclick="AddRecord()" />&nbsp;&nbsp;
+  <input type="button" value="Delete" onclick="DeleteRecord()" />
+  <script>loadRecords();</script> 
+  </body>
+</html>
